@@ -24,11 +24,11 @@
       </thead>
       <tbody>
         <tr v-for="t in transacoes" :key="t.id">
-          <td>{{ t.nome_cliente }}</td>
-          <td>{{ t.telefone }}</td>
-          <td>{{ t.valor }}</td>
-          <td>{{ t.estado }}</td>
-          <td>{{ new Date(t.created_at).toLocaleString() }}</td>
+          <td>{{ t.nome_cliente || '---' }}</td>
+          <td>{{ t.telefone || '---' }}</td>
+          <td>{{ formatValor(t.valor) }}</td>
+          <td>{{ t.estado || '---' }}</td>
+          <td>{{ formatData(t.created_at) }}</td>
         </tr>
       </tbody>
     </table>
@@ -59,11 +59,21 @@ export default {
           url += `?estado=${this.filtroEstado}`;
         }
         const res = await axios.get(url);
+        console.log("Dados recebidos:", res.data); // debug
         this.transacoes = res.data;
       } catch (error) {
         console.error("Erro ao buscar transações:", error);
         this.transacoes = [];
       }
+    },
+    formatData(data) {
+      if (!data) return "Sem data";
+      const d = new Date(data);
+      return isNaN(d) ? "Data inválida" : d.toLocaleString();
+    },
+    formatValor(valor) {
+      if (!valor && valor !== 0) return "---";
+      return Number(valor).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
     },
   },
 };
@@ -71,20 +81,24 @@ export default {
 
 <style scoped>
 h2 {
-  color: darkgreen;
+  color: #2c3e50;
+  text-align: center;
 }
 table {
   width: 100%;
   border-collapse: collapse;
+  margin-top: 10px;
 }
 th {
-  background-color: #f2f2f2;
-}
-td, th {
+  background-color: #ecf0f1;
   padding: 8px;
-  text-align: left;
+}
+td {
+  padding: 8px;
+  border-bottom: 1px solid #bdc3c7;
 }
 select {
   padding: 5px;
+  border-radius: 4px;
 }
 </style>

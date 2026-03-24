@@ -6,9 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateTransacaosTable extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+   
     public function up(): void
     {
         Schema::create('transacaos', function (Blueprint $table) {
@@ -22,9 +20,6 @@ class CreateTransacaosTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('transacaos');
