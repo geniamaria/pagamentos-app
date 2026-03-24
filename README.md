@@ -53,3 +53,8 @@ O objetivo é fornecer uma estrutura limpa e funcional para aprendizado e desenv
 ```bash
 git clone https://github.com/geniamaria/pagamentos-app.git
 cd pagamentos-app
+
+limpar:C:\xampp\php\php.exe artisan config:clear
+C:\xampp\php\php.exe artisan cache:clear
+C:\xampp\php\php.exe artisan route:clear
+C:\xampp\php\php.exe artisan view:clear
