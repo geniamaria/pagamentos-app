@@ -53,26 +53,40 @@ export default {
   },
   methods: {
     async fetchTransacoes() {
-      try {
-        let url = "/api/transacoes";
-        if (this.filtroEstado) {
-          url += `?estado=${this.filtroEstado}`;
-        }
-        const res = await axios.get(url);
-        console.log("Dados recebidos:", res.data); // debug
-        this.transacoes = res.data;
-      } catch (error) {
-        console.error("Erro ao buscar transações:", error);
-        this.transacoes = [];
-      }
-    },
+  try {
+    let url = "http://127.0.0.1:8000/api/transacoes";
+    if (this.filtroEstado) {
+      url += `?estado=${this.filtroEstado}`;
+    }
+
+    const res = await axios.get(url);
+    console.log("Dados recebidos:", res.data);
+
+    let data = res.data;
+    if (typeof res.data === "string") {
+      data = JSON.parse(res.data);
+    }
+
+    if (Array.isArray(data)) {
+      this.transacoes = data.map(t => ({
+        ...t,
+        created_at: t.created_at ? new Date(t.created_at) : null
+      }));
+    } else {
+      console.error("O retorno da API ainda não é um array:", data);
+      this.transacoes = [];
+    }
+  } catch (error) {
+    console.error("Erro ao buscar transações:", error);
+    this.transacoes = [];
+  }
+},
     formatData(data) {
       if (!data) return "Sem data";
-      const d = new Date(data);
-      return isNaN(d) ? "Data inválida" : d.toLocaleString();
+      return isNaN(data.getTime()) ? "Data inválida" : data.toLocaleString();
     },
     formatValor(valor) {
-      if (!valor && valor !== 0) return "---";
+      if (valor === null || valor === undefined) return "---";
       return Number(valor).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
     },
   },

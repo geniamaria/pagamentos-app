@@ -8,16 +8,22 @@ use Illuminate\Http\Request;
 
 class TransacaoController extends Controller
 {
-    public function index(Request $request)
-    {
-        $query = Transacao::query();
+   public function index(Request $request)
+{
+    $query = Transacao::query();
 
-        if ($request->has('estado') && in_array($request->estado, ['pendente', 'pago', 'falhado'])) {
-            $query->where('estado', $request->estado);
-        }
-
-        return response()->json($query->orderBy('created_at', 'desc')->get());
+    if ($request->has('estado') && in_array($request->estado, ['pendente', 'pago', 'falhado'])) {
+        $query->where('estado', $request->estado);
     }
+
+
+    return response()->json(
+        $query->orderBy('created_at', 'desc')->get(),
+        200,
+        [],
+        JSON_UNESCAPED_UNICODE
+    );
+}
 
     public function store(Request $request)
     {

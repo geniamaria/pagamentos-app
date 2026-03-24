@@ -42,3 +42,6 @@ O objetivo é fornecer uma estrutura limpa e funcional para aprendizado e desenv
 ```bash
 git clone https://github.com/geniamaria/pagamentos-app.git
 cd pagamentos-app
+
+iniciar o laravel
+C:\xampp\php\php.exe artisan serve
