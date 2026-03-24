@@ -59,7 +59,7 @@ export default {
       url += `?estado=${this.filtroEstado}`;
     }
 
-    const res = await axios.get(url);
+    const res = await axios.get("/api/transacoes");
     console.log("Dados recebidos:", res.data);
 
     let data = res.data;

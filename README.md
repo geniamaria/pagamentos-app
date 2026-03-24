@@ -1,15 +1,24 @@
 # 💳 Pagamentos App
 
-[![Laravel Version](https://img.shields.io/badge/Laravel-12.x-red)](https://laravel.com/)
-[![Vue Version](https://img.shields.io/badge/Vue-3.x-brightgreen)](https://vuejs.org/)
-[![PHP Version](https://img.shields.io/badge/PHP-8.2-blue)](https://www.php.net/)
-[![License](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
+[![Laravel Version](https://img.shields.io/badge/Laravel-12.x-red)](https://laravel.com/)  
+[![Vue Version](https://img.shields.io/badge/Vue-3.x-brightgreen)](https://vuejs.org/)  
+[![PHP Version](https://img.shields.io/badge/PHP-8.2-blue)](https://www.php.net/)  
+[![License](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)  
+
+---
+
+## 🌐 Link da Aplicação Online
+
+O Pagamentos App está publicado e disponível em:
+
+**[Acessar Aplicação](https://pagamentos-app-ofni9u4.onwolke.app/)**
 
 ---
 
 ## 📌 Descrição
 
 O **Pagamentos App** é um sistema web desenvolvido com **Laravel 12** e **Vue 3**, utilizando **Vite** como bundler, para gerenciamento de transações de pagamentos.  
+
 O projeto integra um backend robusto com Laravel e um frontend reativo com Vue, oferecendo uma base moderna para aplicações web interativas.
 
 O objetivo é fornecer uma estrutura limpa e funcional para aprendizado e desenvolvimento de sistemas de pagamentos, combinando **Blade templates**, **Vue Components**, e **Hot Module Replacement (HMR)** com Vite.
@@ -18,9 +27,11 @@ O objetivo é fornecer uma estrutura limpa e funcional para aprendizado e desenv
 
 ## ⚡ Funcionalidades
 
-- Cadastro e listagem de transações (BackOffice)  
-- Formulário de registro de pagamentos (PagamentoForm)  
+- Cadastro e listagem de transações no **BackOffice**  
+- Formulário de registro de pagamentos (**PagamentoForm**)  
 - Integração com API interna para fetch de dados via Axios  
+- Filtro de transações por estado (`pendente`, `pago`, `falhado`)  
+- Valores e datas formatados automaticamente  
 - Estrutura pronta para Vue Components + Laravel Blade + Vite  
 - Hot Module Replacement (HMR) para desenvolvimento rápido  
 
@@ -42,6 +53,3 @@ O objetivo é fornecer uma estrutura limpa e funcional para aprendizado e desenv
 ```bash
 git clone https://github.com/geniamaria/pagamentos-app.git
 cd pagamentos-app
-
-iniciar o laravel
-C:\xampp\php\php.exe artisan serve
